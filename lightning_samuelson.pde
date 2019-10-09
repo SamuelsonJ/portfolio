@@ -10,19 +10,18 @@ void setup(){
   strokeWeight(5);
 }
 void draw(){
-  stroke(224,194,0);
   //Lightning going down
   if(down==2&&sideways==0){
     endX=startX+((int)(Math.random()*25)-12);
     endY=startY+((int)(Math.random()*20));
-    if(endX>=300){
+    if(startX>=300){
       stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
       down=1;
-    }else if(endY>=300){
+    }else if(startY>=300){
       stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
       sideways=2;
       down=0;
-    }else if(endY<=0){
+    }else if(startY<=0){
       stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
       sideways=1;
       down=0;
@@ -34,14 +33,14 @@ void draw(){
     if(down==1&&sideways==0){
       endX=startX+((int)(Math.random()*25)-12);
       endY=startY-((int)(Math.random()*20));
-      if(endX<=0){
+      if(startX<=0){
         stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
         down=2;
-      }else if(endY>=300){
+      }else if(startY>=300){
         stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
         sideways=2;
         down=0;
-      }else if(endY<=0){
+      }else if(startY<=0){
         stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
         sideways=1;
         down=0;
@@ -52,15 +51,15 @@ void draw(){
     if(down==0&&sideways==2){
       endX=startX-((int)(Math.random()*20));
       endY=startY+((int)(Math.random()*25)-12);
-      if(endY<=0){
+      if(startY<=0){
         stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
         down=0;
         sideways=1;
-      }else if(endX>=300){
+      }else if(startX>=300){
         stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
         sideways=0;
         down=1;
-      }else if(endX<=0){
+      }else if(startX<=0){
         stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
         sideways=1;
         down=2;
@@ -72,14 +71,14 @@ void draw(){
     if(down==0&&sideways==1){
     endX=startX+((int)(Math.random()*20));
     endY=startY+((int)(Math.random()*25)-12);
-      if(endY>=300){
+      if(startY>=300){
         stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
         sideways=2;
-      }else if(endX>=300){
+      }else if(startX>=300){
         stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
         sideways=0;
         down=1;
-      }else if(endX<=0){
+      }else if(startX<=0){
         stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
         sideways=0;
         down=2;
