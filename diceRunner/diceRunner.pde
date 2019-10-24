@@ -1,41 +1,65 @@
-Die die1 = new Die(20, 20);
-Die die2 = new Die(75, 20);
-Die die3 = new Die(130, 20);
-Die die4 = new Die(20, 75);
-Die die5 = new Die(75, 75);
-Die die6 = new Die(130, 75);
-Die die7 = new Die(20, 130);
-Die die8 = new Die(75, 130);
-Die die9 = new Die(130, 130);
-void setup()
-{
-    size(600, 600);
-    noLoop();
+Die die[][] = new Die[3][2];
+boolean roll=true;
+
+void setup(){
+  size(600, 600);
+  noLoop(); 
+  die[0][0] = new Die(20, 20, false);
+  die[1][0] = new Die(75, 20, false);
+  die[2][0] = new Die(130, 20, false);
+  die[0][1] = new Die(20, 75, false);
+  die[1][1] = new Die(75, 75, false);
+  die[2][1] = new Die(130, 75, false);
 }
-void draw()
-{
-  die1.roll();
-  die2.roll();
-  die3.roll();
-  die4.roll();
-  die5.roll();
-  die6.roll();
-  die7.roll();
-  die8.roll();
-  die9.roll();
+
+void draw(){
   background(0);
-  die1.show();
-  die2.show();
-  die3.show();
-  die4.show();
-  die5.show();
-  die6.show();
-  die7.show();
-  die8.show();
-  die9.show();
-    //your code here
+  for(int x=0; x<3; x++){
+    for(int y=0; y<2; y++){
+      if(!die[x][y].saved&&roll==true)        
+        die[x][y].roll();
+      die[x][y].show();
+    }
+  }
+  roll=false;
+  fill(#FFDD18);
+  rect(190, 20, 100, 25, 7);
 }
+
 void mousePressed()
 {
+  if(mouseX>die[0][0].x&&mouseX<die[0][0].x+50&&mouseY>die[0][0].y&&mouseY<die[0][0].y+50){
+    if(die[0][0].saved)
+      die[0][0].switchSaved(false);
+    else if(!die[0][0].saved)
+      die[0][0].switchSaved(true);
+  }else if(mouseX>die[1][0].x&&mouseX<die[1][0].x+50&&mouseY>die[1][0].y&&mouseY<die[1][0].y+50){
+    if(die[1][0].saved) 
+      die[1][0].switchSaved(false);
+    else if(!die[1][0].saved)
+      die[1][0].switchSaved(true);
+  }else if(mouseX>die[2][0].x&&mouseX<die[2][0].x+50&&mouseY>die[2][0].y&&mouseY<die[2][0].y+50){
+    if(die[2][0].saved)
+      die[2][0].switchSaved(false);
+    else if(!die[2][0].saved)
+      die[2][0].switchSaved(true);
+  }else if(mouseX>die[0][1].x&&mouseX<die[0][1].x+50&&mouseY>die[0][1].y&&mouseY<die[0][1].y+50){
+    if(die[0][1].saved)
+      die[0][1].switchSaved(false);
+    else if(!die[0][1].saved)
+      die[0][1].switchSaved(true);
+   }else if(mouseX>die[1][1].x&&mouseX<die[1][1].x+50&&mouseY>die[1][1].y&&mouseY<die[1][1].y+50){
+    if(die[1][1].saved)
+      die[1][1].switchSaved(false);
+    else if(!die[1][1].saved)
+      die[1][1].switchSaved(true);
+   }else if(mouseX>die[2][1].x&&mouseX<die[2][1].x+50&&mouseY>die[2][1].y&&mouseY<die[2][1].y+50){
+    if(die[2][1].saved)
+      die[2][1].switchSaved(false);
+    else if(!die[2][1].saved)
+      die[2][1].switchSaved(true);
+   }else if(mouseX>190&&mouseX<290&&mouseY>20&&mouseY<45){
+    roll=true;
+   }
   redraw();
 }

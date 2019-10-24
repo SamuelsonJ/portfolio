@@ -2,13 +2,16 @@ class Die //models one single dice cube
 {
     int x;
     int y;
-    int pips;
-    //variable declarations here
-    Die(int x, int y) //constructor
+    int pips=1;
+    boolean saved;
+    Die(int x, int y, boolean saved)
     {
       this.x=x;
       this.y=y;
-        //variable initializations here
+      this.saved=saved;
+    }
+    void switchSaved(boolean saved){
+      this.saved=saved;
     }
     void roll()
     {
@@ -16,6 +19,10 @@ class Die //models one single dice cube
     }
     void show()
     {
+      if(!saved)
+        fill(255);
+      else if(saved)
+        fill(#FFDD18);
       rect(x, y, 50, 50, 7);
       fill(0);
       if(pips==1){
@@ -38,7 +45,7 @@ class Die //models one single dice cube
         ellipse(x+10, y+40, 5, 5);
         ellipse(x+40, y+40, 5, 5);
         ellipse(x+25, y+25, 5, 5);
-      }else{
+      }else if(pips==6){
         ellipse(x+10, y+25, 5, 5);
         ellipse(x+40, y+25, 5, 5);
         ellipse(x+10, y+10, 5, 5);
@@ -47,6 +54,5 @@ class Die //models one single dice cube
         ellipse(x+40, y+40, 5, 5);
       }
       fill(255);
-        //your code here
     }
 }
