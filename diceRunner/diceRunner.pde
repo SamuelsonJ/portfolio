@@ -26,8 +26,8 @@ void draw(){
   rect(190, 20, 100, 25, 7);
 }
 
-void mousePressed()
-{
+void mousePressed(){
+  //Dice Saving
   if(mouseX>die[0][0].x&&mouseX<die[0][0].x+50&&mouseY>die[0][0].y&&mouseY<die[0][0].y+50){
     if(die[0][0].saved)
       die[0][0].switchSaved(false);
@@ -58,6 +58,7 @@ void mousePressed()
       die[2][1].switchSaved(false);
     else if(!die[2][1].saved)
       die[2][1].switchSaved(true);
+    //Roll Button
    }else if(mouseX>190&&mouseX<290&&mouseY>20&&mouseY<45){
     roll=true;
    }
