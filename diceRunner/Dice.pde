@@ -17,6 +17,9 @@ class Die //models one single dice cube
     {
         pips=(int)(Math.random()*6)+1;
     }
+    public int returnPips(){
+      return pips;
+    }
     void show()
     {
       if(!saved)
