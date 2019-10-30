@@ -142,7 +142,6 @@ class PointConditions{
           first=pipCount[i];
           if(fourth==third+1&&third==second+1&&second==first+1){
              cont=false;
-             System.out.println(""+first+second+third+fourth);
              points=first+second+third+fourth;
           }
         }
@@ -159,7 +158,6 @@ class PointConditions{
           first=pipCount[i];
           if(fifth==fourth+1&&fourth==third+1&&third==second+1&&second==first+1){
               cont=false;
-              System.out.println(""+first+second+third+fourth+fifth);
               points=first+second+third+fourth+fifth;
           }
         }
@@ -190,6 +188,7 @@ class PointConditions{
             if(rollCounter[j]==2){
               points=((i+1)*4)+((j+1)*2);
               i=0;
+              j=0;
         }
     }
     //freebie        
