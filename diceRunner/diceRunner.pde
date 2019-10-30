@@ -13,6 +13,9 @@ void setup(){
   die[0][1] = new Die(20, 75, false);
   die[1][1] = new Die(75, 75, false);
   die[2][1] = new Die(130, 75, false);
+  for(int i=0; i<15; i++){
+    types[i]= new PointConditions(i);
+  }
 }
 
 void draw(){
@@ -33,9 +36,25 @@ void draw(){
   textSize(32);
   text("Total Score:"+pointTotal, 10, 180);
   fill(#874308);
-  for(int y = 20; y<590; y+=38){
+  for(int y = 20; y<590; y+=38)
     rect(350, y, 200, 32, 7);
-  }
+  fill(255);
+  textSize(20);
+  text("1's                     "+types[0].points(), 360, 43);
+  text("2's                     "+types[1].points(), 360, 81);
+  text("3's                     "+types[2].points(), 360, 119);
+  text("4's                     "+types[3].points(), 360, 157);
+  text("5's                     "+types[4].points(), 360, 195);
+  text("6's                     "+types[5].points(), 360, 233);
+  text("3 of a kind         "+types[6].points(), 360, 271);
+  text("4 of a kind         "+types[7].points(), 360, 309);
+  text("5 of a kind         "+types[8].points(), 360, 347);
+  text("6 of a kind         "+types[9].points(), 360, 385);
+  text("run of 4             "+types[10].points(), 360, 423);
+  text("run of 5             "+types[11].points(), 360, 461);
+  text("run of 6             "+types[12].points(), 360, 499);
+  text("Fuller House      "+types[13].points(), 360, 537);
+  text("Freebie              "+types[14].points(), 360, 575);
 }
 
 void mousePressed(){
@@ -77,10 +96,9 @@ void mousePressed(){
         rolls--;
        
      }
-    redraw();
   }
-  if((mouseX>350&&mouseX<550)&&((mouseY>20&&mouseY<52)||(mouseY>58&&mouseY<90)||(mouseY>95&&mouseY<127)||(mouseY>132&&mouseY<164)||(mouseY>169&&mouseY<201)||(mouseY>206&&mouseY<238)||(mouseY>243&&mouseY<275)||
-  (mouseY>280&&mouseY<312)||(mouseY>317&&mouseY<349)||(mouseY>354&&mouseY<386)||(mouseY>391&&mouseY<423)||(mouseY>428&&mouseY<460)||(mouseY>465&&mouseY<497)||(mouseY>502&&mouseY<534)||(mouseY>539&&mouseY<574))){
+  if((mouseX>350&&mouseX<550)&&((mouseY>20&&mouseY<52)||(mouseY>58&&mouseY<90)||(mouseY>96&&mouseY<128)||(mouseY>134&&mouseY<166)||(mouseY>172&&mouseY<204)||(mouseY>210&&mouseY<242)||(mouseY>248&&mouseY<280)||
+  (mouseY>286&&mouseY<318)||(mouseY>324&&mouseY<356)||(mouseY>362&&mouseY<394)||(mouseY>400&&mouseY<432)||(mouseY>438&&mouseY<470)||(mouseY>476&&mouseY<508)||(mouseY>514&&mouseY<546)||(mouseY>552&&mouseY<584))){
     rolls=2;
     for(int x=0; x<3; x++){
       for(int y=0; y<2; y++){
@@ -88,52 +106,37 @@ void mousePressed(){
       }
     }
     if(mouseY>20&&mouseY<52){
-      types[0]= new PointConditions(0);
       pointTotal+=types[0].returnPoints();
     }else if(mouseY>58&&mouseY<90){
-      types[1]= new PointConditions(1);
       pointTotal+=types[1].returnPoints();
     }else if(mouseY>95&&mouseY<127){
-      types[2]= new PointConditions(2);
       pointTotal+=types[2].returnPoints();
     }else if(mouseY>132&&mouseY<164){
-      types[3]= new PointConditions(3);
       pointTotal+=types[3].returnPoints();
     }else if(mouseY>169&&mouseY<201){
-      types[4]= new PointConditions(4);
       pointTotal+=types[4].returnPoints();
     }else if(mouseY>206&&mouseY<238){
-      types[5]= new PointConditions(5);
       pointTotal+=types[5].returnPoints();
     }else if(mouseY>243&&mouseY<275){
-      types[6]= new PointConditions(6);
       pointTotal+=types[6].returnPoints();
     }else if(mouseY>280&&mouseY<312){
-      types[7]= new PointConditions(7);
       pointTotal+=types[7].returnPoints();
     }else if(mouseY>317&&mouseY<349){
-      types[8]= new PointConditions(8);
       pointTotal+=types[8].returnPoints();
     }else if(mouseY>354&&mouseY<386){
-      types[9]= new PointConditions(9);
       pointTotal+=types[9].returnPoints();
     }else if(mouseY>391&&mouseY<423){
-      types[10]= new PointConditions(10);
       pointTotal+=types[10].returnPoints();
     }else if(mouseY>428&&mouseY<460){
-      types[11]= new PointConditions(11);
       pointTotal+=types[11].returnPoints();
     }else if(mouseY>465&&mouseY<497){
-      types[12]= new PointConditions(12);
       pointTotal+=types[12].returnPoints();
     }else if(mouseY>502&&mouseY<534){
-      types[13]= new PointConditions(13);
       pointTotal+=types[13].returnPoints();
     }else if(mouseY>539&&mouseY<574){
-      types[14]= new PointConditions(14);
       pointTotal+=types[14].returnPoints();
     }
     roll=true;
-    redraw();
   }
+  redraw();
 }
