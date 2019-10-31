@@ -6,9 +6,11 @@ class PointConditions{
   private int[] pipCount={die[0][0].pips, die[0][1].pips, die[1][0].pips, die[1][1].pips, die[2][0].pips, die[2][1].pips};
   private int[] rollCounter={0, 0, 0, 0, 0, 0};
   private boolean cont=true;
+  private boolean used=false;
        
-  PointConditions(int type){
+  PointConditions(int type, boolean used){
     this.type=type;
+    this.used=used;
   }
   //standard point return with detectType();
   public int returnPoints(){
@@ -18,6 +20,14 @@ class PointConditions{
   //Just returns last value of points for each type
   public int points(){
     return points;
+  }
+  
+  public boolean returnUsed(){
+    return used;
+  }
+  
+  public void changeUsed(boolean newValue){
+    used=newValue;
   }
   
   public void sort(int arr[]) { 

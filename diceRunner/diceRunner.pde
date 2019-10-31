@@ -14,7 +14,7 @@ void setup(){
   die[1][1] = new Die(75, 75, false);
   die[2][1] = new Die(130, 75, false);
   for(int i=0; i<15; i++){
-    types[i]= new PointConditions(i);
+    types[i]= new PointConditions(i, false);
   }
 }
 
@@ -48,13 +48,15 @@ void draw(){
   text("6's                     "+types[5].points(), 360, 233);
   text("3 of a kind         "+types[6].points(), 360, 271);
   text("4 of a kind         "+types[7].points(), 360, 309);
-  text("5 of a kind         "+types[8].points(), 360, 347);
-  text("6 of a kind         "+types[9].points(), 360, 385);
-  text("run of 4             "+types[10].points(), 360, 423);
-  text("run of 5             "+types[11].points(), 360, 461);
-  text("run of 6             "+types[12].points(), 360, 499);
-  text("Fuller House      "+types[13].points(), 360, 537);
-  text("Freebie              "+types[14].points(), 360, 575);
+  text("Yahtzee*            "+types[8].points(), 360, 347);
+  text("YEETzha!            "+types[9].points(), 360, 385);
+  text("Run of 4             "+types[10].points(), 360, 423);
+  text("Run of 5             "+types[11].points(), 360, 461);
+  text("Run of 6             "+types[12].points(), 360, 499);
+  text("Fuller House       "+types[13].points(), 360, 537);
+  text("Freebie               "+types[14].points(), 360, 575);
+  textSize(5);
+  text("*I do not own this domain and have no affiliation to the Yahtzee brand", 10, 590);
 }
 
 void mousePressed(){
@@ -106,37 +108,96 @@ void mousePressed(){
       }
     }
     if(mouseY>20&&mouseY<52){
-      pointTotal+=types[0].returnPoints();
+      if(!types[0].returnUsed()){
+        pointTotal+=types[0].returnPoints();
+        types[0].changeUsed(true);
+        roll=true;
+      }
     }else if(mouseY>58&&mouseY<90){
-      pointTotal+=types[1].returnPoints();
+      if(!types[1].returnUsed()){
+        pointTotal+=types[1].returnPoints();
+        types[1].changeUsed(true);
+        roll=true;
+      }
     }else if(mouseY>95&&mouseY<127){
-      pointTotal+=types[2].returnPoints();
+      if(!types[2].returnUsed()){
+        pointTotal+=types[2].returnPoints();
+        types[2].changeUsed(true);
+        roll=true;
+      }
     }else if(mouseY>132&&mouseY<164){
-      pointTotal+=types[3].returnPoints();
+      if(!types[3].returnUsed()){
+        pointTotal+=types[3].returnPoints();
+        types[3].changeUsed(true);
+        roll=true;
+      }
     }else if(mouseY>169&&mouseY<201){
-      pointTotal+=types[4].returnPoints();
+      if(!types[4].returnUsed()){
+        pointTotal+=types[4].returnPoints();
+        types[4].changeUsed(true);
+        roll=true;
+      }
     }else if(mouseY>206&&mouseY<238){
-      pointTotal+=types[5].returnPoints();
+      if(!types[5].returnUsed()){
+        pointTotal+=types[5].returnPoints();
+        types[5].changeUsed(true);
+        roll=true;
+      }
     }else if(mouseY>243&&mouseY<275){
-      pointTotal+=types[6].returnPoints();
+      if(!types[6].returnUsed()){
+        pointTotal+=types[6].returnPoints();
+        types[6].changeUsed(true);
+        roll=true;
+      }
     }else if(mouseY>280&&mouseY<312){
-      pointTotal+=types[7].returnPoints();
+      if(!types[7].returnUsed()){
+        pointTotal+=types[7].returnPoints();
+        types[7].changeUsed(true);
+        roll=true;
+      }
     }else if(mouseY>317&&mouseY<349){
-      pointTotal+=types[8].returnPoints();
+      if(!types[8].returnUsed()){
+        pointTotal+=types[8].returnPoints();
+        types[8].changeUsed(true);
+        roll=true;
+      }
     }else if(mouseY>354&&mouseY<386){
-      pointTotal+=types[9].returnPoints();
+      if(!types[9].returnUsed()){
+        pointTotal+=types[9].returnPoints();
+        types[9].changeUsed(true);
+        roll=true;
+      }
     }else if(mouseY>391&&mouseY<423){
-      pointTotal+=types[10].returnPoints();
+      if(!types[10].returnUsed()){
+        pointTotal+=types[10].returnPoints();
+        types[10].changeUsed(true);
+        roll=true;
+      }
     }else if(mouseY>428&&mouseY<460){
-      pointTotal+=types[11].returnPoints();
+      if(!types[11].returnUsed()){
+        pointTotal+=types[11].returnPoints();
+        types[11].changeUsed(true);
+        roll=true;
+      }
     }else if(mouseY>465&&mouseY<497){
-      pointTotal+=types[12].returnPoints();
+      if(!types[12].returnUsed()){
+        pointTotal+=types[12].returnPoints();
+        types[12].changeUsed(true);
+        roll=true;
+      }
     }else if(mouseY>502&&mouseY<534){
-      pointTotal+=types[13].returnPoints();
+      if(!types[13].returnUsed()){
+        pointTotal+=types[13].returnPoints();
+        types[13].changeUsed(true);
+        roll=true;
+      }
     }else if(mouseY>539&&mouseY<574){
-      pointTotal+=types[14].returnPoints();
+      if(!types[14].returnUsed()){
+        pointTotal+=types[14].returnPoints();
+        types[14].changeUsed(true);
+        roll=true;
+      }
     }
-    roll=true;
   }
   redraw();
 }
