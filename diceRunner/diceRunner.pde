@@ -3,6 +3,7 @@ PointConditions types[] = new PointConditions[15];
 boolean roll=true;
 int rolls = 2;
 int pointTotal=0;
+boolean testFinished=true;
 
 void setup(){
   size(600, 600);
@@ -20,6 +21,7 @@ void setup(){
 
 void draw(){
   background(0);
+  //rolling dice
   for(int x=0; x<3; x++){
     for(int y=0; y<2; y++){
       if(!die[x][y].saved&&roll==true)        
@@ -31,10 +33,13 @@ void draw(){
   //roll button
   fill(#FFDD18);
   rect(190, 20, 100, 25, 7);
-  //win displays
+  fill(0);
+  textSize(20);
+  text("Roll", 220, 40);
   fill(255);
   textSize(32);
   text("Total Score:"+pointTotal, 10, 180);
+  //win displays
   fill(#874308);
   for(int y = 20; y<590; y+=38)
     rect(350, y, 200, 32, 7);
@@ -57,6 +62,17 @@ void draw(){
   text("Freebie               "+types[14].points(), 360, 575);
   textSize(5);
   text("*I do not own this domain and have no affiliation to the Yahtzee brand", 10, 590);
+  
+  //reset
+  if(testFinished/*finished()*/){
+    fill(#FFDD18);
+    rect(30, 240, 100, 25, 7);
+    rect(30, 280, 100, 25, 7);
+    fill(0);
+    textSize(20);
+    text("Restart", 45, 260);
+    text("Continue", 38, 300);
+  }
 }
 
 void mousePressed(){
@@ -99,6 +115,7 @@ void mousePressed(){
        
      }
   }
+  //pointConditions
   if((mouseX>350&&mouseX<550)&&((mouseY>20&&mouseY<52)||(mouseY>58&&mouseY<90)||(mouseY>96&&mouseY<128)||(mouseY>134&&mouseY<166)||(mouseY>172&&mouseY<204)||(mouseY>210&&mouseY<242)||(mouseY>248&&mouseY<280)||
   (mouseY>286&&mouseY<318)||(mouseY>324&&mouseY<356)||(mouseY>362&&mouseY<394)||(mouseY>400&&mouseY<432)||(mouseY>438&&mouseY<470)||(mouseY>476&&mouseY<508)||(mouseY>514&&mouseY<546)||(mouseY>552&&mouseY<584))){
     rolls=2;
@@ -108,96 +125,66 @@ void mousePressed(){
       }
     }
     if(mouseY>20&&mouseY<52){
-      if(!types[0].returnUsed()){
-        pointTotal+=types[0].returnPoints();
-        types[0].changeUsed(true);
-        roll=true;
-      }
+      runCondition(0);
     }else if(mouseY>58&&mouseY<90){
-      if(!types[1].returnUsed()){
-        pointTotal+=types[1].returnPoints();
-        types[1].changeUsed(true);
-        roll=true;
-      }
+      runCondition(1);
     }else if(mouseY>95&&mouseY<127){
-      if(!types[2].returnUsed()){
-        pointTotal+=types[2].returnPoints();
-        types[2].changeUsed(true);
-        roll=true;
-      }
+      runCondition(2);
     }else if(mouseY>132&&mouseY<164){
-      if(!types[3].returnUsed()){
-        pointTotal+=types[3].returnPoints();
-        types[3].changeUsed(true);
-        roll=true;
-      }
+      runCondition(3);
     }else if(mouseY>169&&mouseY<201){
-      if(!types[4].returnUsed()){
-        pointTotal+=types[4].returnPoints();
-        types[4].changeUsed(true);
-        roll=true;
-      }
+      runCondition(4);
     }else if(mouseY>206&&mouseY<238){
-      if(!types[5].returnUsed()){
-        pointTotal+=types[5].returnPoints();
-        types[5].changeUsed(true);
-        roll=true;
-      }
+      runCondition(5);
     }else if(mouseY>243&&mouseY<275){
-      if(!types[6].returnUsed()){
-        pointTotal+=types[6].returnPoints();
-        types[6].changeUsed(true);
-        roll=true;
-      }
+      runCondition(6);
     }else if(mouseY>280&&mouseY<312){
-      if(!types[7].returnUsed()){
-        pointTotal+=types[7].returnPoints();
-        types[7].changeUsed(true);
-        roll=true;
-      }
+      runCondition(7);
     }else if(mouseY>317&&mouseY<349){
-      if(!types[8].returnUsed()){
-        pointTotal+=types[8].returnPoints();
-        types[8].changeUsed(true);
-        roll=true;
-      }
+      runCondition(8);
     }else if(mouseY>354&&mouseY<386){
-      if(!types[9].returnUsed()){
-        pointTotal+=types[9].returnPoints();
-        types[9].changeUsed(true);
-        roll=true;
-      }
+      runCondition(9);
     }else if(mouseY>391&&mouseY<423){
-      if(!types[10].returnUsed()){
-        pointTotal+=types[10].returnPoints();
-        types[10].changeUsed(true);
-        roll=true;
-      }
+      runCondition(10);
     }else if(mouseY>428&&mouseY<460){
-      if(!types[11].returnUsed()){
-        pointTotal+=types[11].returnPoints();
-        types[11].changeUsed(true);
-        roll=true;
-      }
+      runCondition(11);
     }else if(mouseY>465&&mouseY<497){
-      if(!types[12].returnUsed()){
-        pointTotal+=types[12].returnPoints();
-        types[12].changeUsed(true);
-        roll=true;
-      }
+      runCondition(12);
     }else if(mouseY>502&&mouseY<534){
-      if(!types[13].returnUsed()){
-        pointTotal+=types[13].returnPoints();
-        types[13].changeUsed(true);
-        roll=true;
-      }
+      runCondition(13);
     }else if(mouseY>539&&mouseY<574){
-      if(!types[14].returnUsed()){
-        pointTotal+=types[14].returnPoints();
-        types[14].changeUsed(true);
-        roll=true;
+      runCondition(14);
+    }
+  }
+  //reset area
+  if((finished()&&mouseX>30&&mouseX<130)&&(mouseY>240&&mouseY<265)||(mouseY>280&&mouseY<205)){
+    for(int i=0;i<15;i++){
+      types[i].changeUsed(false);
+      types[i].changePoints(0);
+    }
+    for(int x=0; x<3; x++){
+      for(int y=0; y<2; y++){
+        die[x][y].switchSaved(false);
       }
+    }
+    if(mouseY>240&&mouseY<265){
+      
     }
   }
   redraw();
+}
+
+public void runCondition(int type){
+  if(!types[type].returnUsed()){
+     pointTotal+=types[type].returnPoints();
+     types[type].changeUsed(true);
+     roll=true;    
+  }
+}
+
+public boolean finished(){
+  if(types[0].returnUsed()&&types[1].returnUsed()&&types[2].returnUsed()&&types[3].returnUsed()&&types[4].returnUsed()&&types[5].returnUsed()&&types[6].returnUsed()&&types[7].returnUsed()&&types[8].returnUsed()&&types[9].returnUsed()&&types[10].returnUsed()&&types[11].returnUsed()&&types[12].returnUsed()&&types[13].returnUsed()&&types[14].returnUsed()){
+    return true;
+  }
+  return false;
 }

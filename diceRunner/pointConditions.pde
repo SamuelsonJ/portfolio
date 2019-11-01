@@ -26,6 +26,10 @@ class PointConditions{
     return used;
   }
   
+  public void changePoints(int value){
+    points=value;
+  }
+  
   public void changeUsed(boolean newValue){
     used=newValue;
   }
