@@ -43,3 +43,12 @@
 body {
     background-color: #F2911B;
 }
+
+.textbox {
+    width: 200px;
+    border-width: medium thick thick medium;
+    background-color: brown;
+    border-style: double solid solid double;
+    padding: 50px;
+    margin 200px;
+}
