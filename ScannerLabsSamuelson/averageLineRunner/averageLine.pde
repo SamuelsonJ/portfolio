@@ -1,10 +1,12 @@
 import java.util.Scanner;
 import static java.lang.System.*;
+import java.text.*;
 
 public class Average
 {
    private String line;
    private Scanner scam;
+   private DecimalFormat df = new DecimalFormat("#.###");
 
    public Average(){
      line = ("");
@@ -21,36 +23,36 @@ public class Average
      scam = new Scanner(s);
   }
 
-  public int getCount(){
-    int count=0;
+  public double getCount(){
+    double count=0;
     while(scam.hasNextInt()){
       scam.nextInt();
       count++;
     }
+    scam = new Scanner(line);
     return count;
   }
 
 
-  public int getSum(){
-    int sum=0;
+  public double getSum(){
+    double sum=0;
     while(scam.hasNextInt()){
-      sum+=
+      sum+=scam.nextInt();
     }
+    scam = new Scanner(line);
     return sum;
   }
 
   public double getAverage(){
-    double average=0.0;
-
-
+    double average=getSum()/getCount();
     return average;
   }
 
   public String getLine(){
-    return "";
+    return line+"\n"+getAverage();
   }
 
   public String toString(){
-    return "";
+    return line+"\n"+df.format(getAverage());
   }
 }
